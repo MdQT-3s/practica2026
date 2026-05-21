@@ -1,0 +1,102 @@
+@font-face {
+  font-family: "Play-Regular";
+  src: url("../fonts/Play-Regular.woff") format("woff");
+}
+
+* {
+  font-family: "Play-Regular";
+}
+
+.nav-link {
+  font-size: 25px;
+}
+
+.btn-outline-primary {
+  font-size: 20px;
+}
+
+.list-group-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.5rem;
+  align-items: start;
+  word-break: break-word;
+}
+
+@media (max-width: 991.98px) {
+  .users-table thead {
+    display: none;
+  }
+
+  .users-table tbody tr {
+    display: block;
+    margin-bottom: 1.25rem;
+    border: 1px solid var(--bs-border-color);
+    border-radius: 0.75rem;
+    background-color: var(--bs-body-bg);
+    padding: 0.75rem;
+  }
+
+  .users-table tbody td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    border-bottom: 1px solid var(--bs-border-color);
+    padding: 0.6rem 0.25rem;
+    text-align: left !important;
+  }
+
+  .users-table tbody td:last-child {
+    border-bottom: none;
+  }
+
+  .users-table tbody td::before {
+    content: attr(data-label);
+    font-weight: 700;
+    width: 40%;
+    color: var(--bs-secondary-color);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+  }
+
+  .users-table tbody td .badge,
+  .users-table tbody td .action-buttons,
+  .users-table tbody td .fw-semibold,
+  .users-table tbody td .text-muted {
+    text-align: right;
+    justify-content: flex-end;
+  }
+
+  .users-table tbody td .action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .users-table tbody td .btn-sm {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .users-table tbody tr {
+    padding: 0.5rem;
+  }
+
+  .users-table tbody td {
+    padding: 0.5rem 0;
+    gap: 0.5rem;
+  }
+
+  .users-table tbody td::before {
+    width: 35%;
+    font-size: 0.75rem;
+  }
+
+  .users-table tbody td .btn-sm {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.8rem;
+  }
+}

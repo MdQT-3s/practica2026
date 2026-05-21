@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="ru" data-bs-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Комментарии — AdminF1</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body class="bg-body-tertiary body">
+  <nav class="navbar bg-body py-2">
+    <div class="container-fluid px-3 px-lg-4 d-flex justify-content-between align-items-center">
+      <div class="d-flex align-items-center">
+        <button class="btn btn-outline-secondary d-lg-none p-2" type="button" data-bs-toggle="offcanvas"
+          data-bs-target="#mobileMenu" aria-label="Открыть меню">
+          <i class="bi bi-list fs-4"></i>
+        </button>
+        <a class="navbar-brand fs-2 fw-bold d-none d-lg-inline ms-3 ps-3" href="index.html">AdminF1</a>
+      </div>
+      <div class="d-flex align-items-center gap-2">
+        <button
+          class="btn btn-outline-secondary theme-toggle py-2 px-3 d-none d-lg-inline-flex align-items-center justify-content-center"
+          type="button" aria-label="Переключить тему">
+          <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M7.5,2C5.71,3.15 4.5,5.18 4.5,7.5C4.5,9.82 5.71,11.85 7.53,13C4.46,13 2,10.54 2,7.5A5.5,5.5 0 0,1 7.5,2M19.07,3.5L20.5,4.93L4.93,20.5L3.5,19.07L19.07,3.5M12.89,5.93L11.41,5L9.97,6L10.39,4.3L9,3.24L10.75,3.12L11.33,1.47L12,3.1L13.73,3.13L12.38,4.26L12.89,5.93M9.59,9.54L8.43,8.81L7.31,9.59L7.65,8.27L6.56,7.44L7.92,7.35L8.37,6.06L8.88,7.33L10.24,7.36L9.19,8.23L9.59,9.54M19,13.5A5.5,5.5 0 0,1 13.5,19C12.28,19 11.15,18.6 10.24,17.93L17.93,10.24C18.6,11.15 19,12.28 19,13.5M14.6,20.08L17.37,18.93L17.13,22.28L14.6,20.08M18.93,17.38L20.08,14.61L22.28,17.15L18.93,17.38M20.08,12.42L18.94,9.64L22.28,9.88L20.08,12.42M9.63,18.93L12.4,20.08L9.87,22.27L9.63,18.93Z" />
+          </svg>
+        </button>
+        <div class="dropdown">
+          <button class="btn btn-outline-secondary dropdown-toggle py-2 px-3 d-flex align-items-center gap-2"
+            type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-person-circle fs-5"></i> <span>Аккаунт</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 mt-2 py-1">
+            <li><a class="dropdown-item py-2 rounded-2" href="#">Выход</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid px-0">
+    <div class="row g-0">
+      <aside class="col-lg-3 col-xl-2 d-none d-lg-block bg-body border-end min-vh-100 p-3 my_menu_left">
+        <div class="d-flex flex-column gap-3">
+          <nav class="nav flex-column gap-4">
+            <a class="nav-link text-body px-3 py-2 text-center" href="index.html">Главная</a>
+            <a class="nav-link text-body px-3 py-2 text-center" href="auth.html">Авторизация</a>
+            <a class="nav-link text-body px-3 py-2 text-center" href="users.html">Пользователи</a>
+            <a class="nav-link text-body px-3 py-2 text-center" href="race.html">Гонки</a>
+            <a class="nav-link active fw-semibold bg-body-secondary rounded-pill px-4 py-2 text-center active_color"
+              href="comments.html">Комментарии</a>
+          </nav>
+        </div>
+      </aside>
+
+      <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
+        <div class="offcanvas-header">
+          <h2 class="offcanvas-title fw-semibold" id="mobileMenuLabel">AdminF1</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Закрыть"></button>
+        </div>
+        <div class="offcanvas-body">
+          <button
+            class="btn btn-outline-secondary theme-toggle w-100 py-2 d-flex align-items-center justify-content-center gap-2 mb-3"
+            type="button">
+            <svg width="35" height="35" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M7.5,2C5.71,3.15 4.5,5.18 4.5,7.5C4.5,9.82 5.71,11.85 7.53,13C4.46,13 2,10.54 2,7.5A5.5,5.5 0 0,1 7.5,2M19.07,3.5L20.5,4.93L4.93,20.5L3.5,19.07L19.07,3.5M12.89,5.93L11.41,5L9.97,6L10.39,4.3L9,3.24L10.75,3.12L11.33,1.47L12,3.1L13.73,3.13L12.38,4.26L12.89,5.93M9.59,9.54L8.43,8.81L7.31,9.59L7.65,8.27L6.56,7.44L7.92,7.35L8.37,6.06L8.88,7.33L10.24,7.36L9.19,8.23L9.59,9.54M19,13.5A5.5,5.5 0 0,1 13.5,19C12.28,19 11.15,18.6 10.24,17.93L17.93,10.24C18.6,11.15 19,12.28 19,13.5M14.6,20.08L17.37,18.93L17.13,22.28L14.6,20.08M18.93,17.38L20.08,14.61L22.28,17.15L18.93,17.38M20.08,12.42L18.94,9.64L22.28,9.88L20.08,12.42M9.63,18.93L12.4,20.08L9.87,22.27L9.63,18.93Z" />
+            </svg>
+          </button>
+          <nav class="nav flex-column gap-2">
+            <a class="nav-link text-body px-3 py-2 text-center" href="index.html">Главная</a>
+            <a class="nav-link text-body px-3 py-2 text-center" href="auth.html">Авторизация</a>
+            <a class="nav-link text-body px-3 py-2 text-center" href="users.html">Пользователи</a>
+            <a class="nav-link text-body px-3 py-2 text-center" href="race.html">Гонки</a>
+            <a class="nav-link active fw-semibold bg-body-secondary rounded-pill px-4 py-2 text-center active_color"
+              href="comments.html">Комментарии</a>
+          </nav>
+        </div>
+      </div>
+
+      <main class="col-12 col-lg-9 col-xl-10 p-3 p-md-4">
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+          <h2 class="m-0">Управление комментариями</h2>
+          <button class="btn btn-outline-primary rounded-1 px-4" data-bs-toggle="modal"
+            data-bs-target="#newCommentModal">
+            <i class="bi bi-plus-lg me-2"></i>Новый комментарий
+          </button>
+        </div>
+
+        <h4 id="bahreyn" class="mb-3 border-bottom pb-2">
+          <i class="bi bi-flag-fill"></i> Гран-при Бахрейна
+        </h4>
+
+        <ul class="nav nav-pills gap-2 mb-3" id="bahrainStatusTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active rounded-1 px-3 py-1" id="bahrain-all-tab" data-bs-toggle="tab"
+              data-bs-target="#bahrain-all" type="button" role="tab" aria-selected="true">Все</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link rounded-1 px-3 py-1" id="bahrain-new-tab" data-bs-toggle="tab"
+              data-bs-target="#bahrain-new" type="button" role="tab" aria-selected="false">Новые</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link rounded-1 px-3 py-1" id="bahrain-checked-tab" data-bs-toggle="tab"
+              data-bs-target="#bahrain-checked" type="button" role="tab" aria-selected="false">Проверенные</button>
+          </li>
+        </ul>
+
+        <div class="tab-content" id="bahrainStatusContent">
+          <div class="tab-pane fade show active" id="bahrain-all" role="tabpanel">
+            <ul class="nav nav-tabs border-0 gap-2 mb-3" id="bahrainAllTabs" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active rounded-1 px-3 py-1" id="bahrain-all-page1-tab" data-bs-toggle="tab"
+                  data-bs-target="#bahrain-all-page1" type="button" role="tab" aria-controls="bahrain-all-page1"
+                  aria-selected="true">1</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link rounded-1 px-3 py-1" id="bahrain-all-page2-tab" data-bs-toggle="tab"
+                  data-bs-target="#bahrain-all-page2" type="button" role="tab" aria-controls="bahrain-all-page2"
+                  aria-selected="false">2</button>
+              </li>
+            </ul>
+
+            <div class="tab-content">
+              <div class="tab-pane fade show active" id="bahrain-all-page1" role="tabpanel">
+                <div class="row g-4">
+                  <div class="col-12" id="comment-bahrain-alexey">
+                    <div class="card rounded-3 shadow-sm border-0">
+                      <div class="card-body p-4">
+                        <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                          <div>
+                            <i class="bi bi-person-circle fs-5 me-1 align-middle"></i>
+                            <strong class="fs-5">Алексей</strong>
+                            <span class="text-muted small ms-2"><i class="bi bi-clock"></i> 2 марта 2025, 15:30</span>
+                          </div>
+                          <span class="badge bg-warning text-dark px-3 py-2 rounded-1">Новый</span>
+                        </div>
+                        <div class="mb-2">
+                          <a href="race.html" class="text-decoration-none small fw-semibold text-primary">
+                            <i class="bi bi-flag-fill"></i> Гран-при Бахрейна
+                          </a>
+                        </div>
+                        <p class="mb-3 fs-6">Отличная гонка! Макс просто великолепен. Жду следующего этапа.</p>
+                        <div class="d-flex gap-2">
+                          <button class="btn btn-sm btn-outline-success rounded-1 px-3" data-bs-toggle="modal"
+                            data-bs-target="#approveModal">Одобрить</button>
+                          <button class="btn btn-sm btn-outline-danger rounded-1 px-3" data-bs-toggle="modal"
+                            data-bs-target="#deleteModal">Удалить</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12" id="comment-bahrain-anton">
+                    <div class="card rounded-3 shadow-sm border-0">
+                      <div class="card-body p-4">
+                        <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                          <div>
+                            <i class="bi bi-person-circle fs-5 me-1 align-middle"></i>
+                            <strong class="fs-5">Антон</strong>
+                            <span class="text-muted small ms-2"><i class="bi bi-clock"></i> 2 марта 2025, 17:20</span>
+                          </div>
+                          <span class="badge bg-secondary px-3 py-2 rounded-1">Проверен</span>
+                        </div>
+                        <div class="mb-2">
+                          <a href="race.html" class="text-decoration-none small fw-semibold text-primary">
+                            <i class="bi bi-flag-fill"></i> Гран-при Бахрейна
+                          </a>
+                        </div>
+                        <p class="mb-3 fs-6">Спасибо за репортаж! Очень понравилась организация гонки.</p>
+                        <div class="d-flex gap-2">
+                          <button class="btn btn-sm btn-outline-secondary rounded-1 px-3" disabled>Одобрен</button>
+                          <button class="btn btn-sm btn-outline-danger rounded-1 px-3" data-bs-toggle="modal"
+                            data-bs-target="#deleteModal">Удалить</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="bahrain-all-page2" role="tabpanel">
+                <div class="row g-4">
+                  <div class="col-12">
+                    <div class="card rounded-3 shadow-sm border-0">
+                      <div class="card-body p-4">
+                        <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                          <div>
+                            <i class="bi bi-person-circle fs-5 me-1 align-middle"></i>
+                            <strong class="fs-5">Мария</strong>
+                            <span class="text-muted small ms-2"><i class="bi bi-clock"></i> 3 марта 2025, 09:15</span>
+                          </div>
+                          <span class="badge bg-warning text-dark px-3 py-2 rounded-1">Новый</span>
+                        </div>
+                        <div class="mb-2">
+                          <a href="race.html" class="text-decoration-none small fw-semibold text-primary">
+                            <i class="bi bi-flag-fill"></i> Гран-при Бахрейна
+                          </a>
+                        </div>
+                        <p class="mb-3 fs-6">Пересматривал старт три раза! Лучший момент сезона.</p>
+                        <div class="d-flex gap-2">
+                          <button class="btn btn-sm btn-outline-success rounded-1 px-3" data-bs-toggle="modal"
+                            data-bs-target="#approveModal">Одобрить</button>
+                          <button class="btn btn-sm btn-outline-danger rounded-1 px-3" data-bs-toggle="modal"
+                            data-bs-target="#deleteModal">Удалить</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="card rounded-3 shadow-sm border-0">
+                      <div class="card-body p-4">
+                        <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                          <div>
+                            <i class="bi bi-person-circle fs-5 me-1 align-middle"></i>
+                            <strong class="fs-5">Олег</strong>
+                            <span class="text-muted small ms-2"><i class="bi bi-clock"></i> 4 марта 2025, 14:10</span>
+                          </div>
+                          <span class="badge bg-secondary px-3 py-2 rounded-1">Проверен</span>
+                        </div>
+                        <div class="mb-2">
+                          <a href="race.html" class="text-decoration-none small fw-semibold text-primary">
+                            <i class="bi bi-flag-fill"></i> Гран-при Бахрейна
+                          </a>
+                        </div>
+                        <p class="mb-3 fs-6">Отличный анализ от комментаторов, спасибо!</p>
+                        <div class="d-flex gap-2">
+                          <button class="btn btn-sm btn-outline-secondary rounded-1 px-3" disabled>Одобрен</button>
+                          <button class="btn btn-sm btn-outline-danger rounded-1 px-3" data-bs-toggle="modal"
+                            data-bs-target="#deleteModal">Удалить</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="bahrain-new" role="tabpanel">
+            <div class="row g-4">
+              <div class="col-12">
+                <div class="card rounded-3 shadow-sm border-0">
+                  <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                      <div>
+                        <i class="bi bi-person-circle fs-5 me-1 align-middle"></i>
+                        <strong class="fs-5">Алексей</strong>
+                        <span class="text-muted small ms-2"><i class="bi bi-clock"></i> 2 марта 2025, 15:30</span>
+                      </div>
+                      <span class="badge bg-warning text-dark px-3 py-2 rounded-1">Новый</span>
+                    </div>
+                    <div class="mb-2">
+                      <a href="race.html" class="text-decoration-none small fw-semibold text-primary">
+                        <i class="bi bi-flag-fill"></i> Гран-при Бахрейна
+                      </a>
+                    </div>
+                    <p class="mb-3 fs-6">Отличная гонка! Макс просто великолепен. Жду следующего этапа.</p>
+                    <div class="d-flex gap-2">
+                      <button class="btn btn-sm btn-outline-success rounded-1 px-3" data-bs-toggle="modal"
+                        data-bs-target="#approveModal">Одобрить</button>
+                      <button class="btn btn-sm btn-outline-danger rounded-1 px-3" data-bs-toggle="modal"
+                        data-bs-target="#deleteModal">Удалить</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="card rounded-3 shadow-sm border-0">
+                  <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                      <div>
+                        <i class="bi bi-person-circle fs-5 me-1 align-middle"></i>
+                        <strong class="fs-5">Мария</strong>
+                        <span class="text-muted small ms-2"><i class="bi bi-clock"></i> 3 марта 2025, 09:15</span>
+                      </div>
+                      <span class="badge bg-warning text-dark px-3 py-2 rounded-1">Новый</span>
+                    </div>
+                    <div class="mb-2">
+                      <a href="race.html" class="text-decoration-none small fw-semibold text-primary">
+                        <i class="bi bi-flag-fill"></i> Гран-при Бахрейна
+                      </a>
+                    </div>
+                    <p class="mb-3 fs-6">Пересматривал старт три раза! Лучший момент сезона.</p>
+                    <div class="d-flex gap-2">
+                      <button class="btn btn-sm btn-outline-success rounded-1 px-3" data-bs-toggle="modal"
+                        data-bs-target="#approveModal">Одобрить</button>
+                      <button class="btn btn-sm btn-outline-danger rounded-1 px-3" data-bs-toggle="modal"
+                        data-bs-target="#deleteModal">Удалить</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="bahrain-checked" role="tabpanel">
+            <div class="row g-4">
+              <div class="col-12">
+                <div class="card rounded-3 shadow-sm border-0">
+                  <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                      <div>
+                        <i class="bi bi-person-circle fs-5 me-1 align-middle"></i>
+                        <strong class="fs-5">Антон</strong>
+                        <span class="text-muted small ms-2"><i class="bi bi-clock"></i> 2 марта 2025, 17:20</span>
+                      </div>
+                      <span class="badge bg-secondary px-3 py-2 rounded-1">Проверен</span>
+                    </div>
+                    <div class="mb-2">
+                      <a href="race.html" class="text-decoration-none small fw-semibold text-primary">
+                        <i class="bi bi-flag-fill"></i> Гран-при Бахрейна
+                      </a>
+                    </div>
+                    <p class="mb-3 fs-6">Спасибо за репортаж! Очень понравилась организация гонки.</p>
+                    <div class="d-flex gap-2">
+                      <button class="btn btn-sm btn-outline-secondary rounded-1 px-3" disabled>Одобрен</button>
+                      <button class="btn btn-sm btn-outline-danger rounded-1 px-3" data-bs-toggle="modal"
+                        data-bs-target="#deleteModal">Удалить</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="card rounded-3 shadow-sm border-0">
+                  <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                      <div>
+                        <i class="bi bi-person-circle fs-5 me-1 align-middle"></i>
+                        <strong class="fs-5">Олег</strong>
+                        <span class="text-muted small ms-2"><i class="bi bi-clock"></i> 4 марта 2025, 14:10</span>
+                      </div>
+                      <span class="badge bg-secondary px-3 py-2 rounded-1">Проверен</span>
+                    </div>
+                    <div class="mb-2">
+                      <a href="race.html" class="text-decoration-none small fw-semibold text-primary">
+                        <i class="bi bi-flag-fill"></i> Гран-при Бахрейна
+                      </a>
+                    </div>
+                    <p class="mb-3 fs-6">Отличный анализ от комментаторов, спасибо!</p>
+                    <div class="d-flex gap-2">
+                      <button class="btn btn-sm btn-outline-secondary rounded-1 px-3" disabled>Одобрен</button>
+                      <button class="btn btn-sm btn-outline-danger rounded-1 px-3" data-bs-toggle="modal"
+                        data-bs-target="#deleteModal">Удалить</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h4 id="UK" class="mt-4 mb-3 border-bottom pb-2">
+          <i class="bi bi-flag-fill"></i> Гран-при Великобритании
+        </h4>
+
+        <ul class="nav nav-pills gap-2 mb-3" id="ukStatusTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active rounded-1 px-3 py-1" id="uk-all-tab" data-bs-toggle="tab"
+              data-bs-target="#uk-all" type="button" role="tab" aria-selected="true">Все</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link rounded-1 px-3 py-1" id="uk-new-tab" data-bs-toggle="tab" data-bs-target="#uk-new"
+              type="button" role="tab" aria-selected="false">Новые</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link rounded-1 px-3 py-1" id="uk-checked-tab" data-bs-toggle="tab"
+              data-bs-target="#uk-checked" type="button" role="tab" aria-selected="false">Проверенные</button>
+          </li>
+        </ul>
+
+        <div class="tab-content" id="ukStatusContent">
+          <div class="tab-pane fade show active" id="uk-all" role="tabpanel">
+            <ul class="nav nav-tabs border-0 gap-2 mb-3" id="ukAllTabs" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active rounded-1 px-3 py-1" id="uk-all-page1-tab" data-bs-toggle="tab"
+                  data-bs-target="#uk-all-page1" type="button" role="tab" aria-controls="uk-all-page1"
+                  aria-selected="true">1</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link rounded-1 px-3 py-1" id="uk-all-page2-tab" data-bs-toggle="tab"
+                  data-bs-target="#uk-all-page2" type="button" role="tab" aria-controls="uk-all-page2"
+                  aria-selected="false">2</button>
+              </li>
+            </ul>
+
+            <div class="tab-content">
+              <div class="tab-pane fade show active" id="uk-all-page1" role="tabpanel">
+                <div class="row g-4">
+                  <div class="col-12" id="comment-uk-ivan">
+                    <div class="card rounded-3 shadow-sm border-0">
+                      <div class="card-body p-4">
+                        <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                          <div>
+                            <i class="bi bi-person-circle fs-5 me-1 align-middle"></i>
+                            <strong class="fs-5">Иван</strong>
+                            <span class="text-muted small ms-2"><i class="bi bi-clock"></i> 6 июля 2025, 18:45</span>
+                          </div>
+                          <span class="badge bg-warning text-dark px-3 py-2 rounded-1">Новый</span>
+                        </div>
+                        <div class="mb-2">
+                          <a href="race.html" class="text-decoration-none small fw-semibold text-primary">
+                            <i class="bi bi-flag-fill"></i> Гран-при Великобритании
+                          </a>
+                        </div>
+                        <p class="mb-3 fs-6">На Сильверстоуне была невероятная битва! Хэмилтон вернулся на подиум –
+                          класс!</p>
+                        <div class="d-flex gap-2">
+                          <button class="btn btn-sm btn-outline-success rounded-1 px-3" data-bs-toggle="modal"
+                            data-bs-target="#approveModal">Одобрить</button>
+                          <button class="btn btn-sm btn-outline-danger rounded-1 px-3" data-bs-toggle="modal"
+                            data-bs-target="#deleteModal">Удалить</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="card rounded-3 shadow-sm border-0">
+                      <div class="card-body p-4">
+                        <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                          <div>
+                            <i class="bi bi-person-circle fs-5 me-1 align-middle"></i>
+                            <strong class="fs-5">Дмитрий</strong>
+                            <span class="text-muted small ms-2"><i class="bi bi-clock"></i> 7 июля 2025, 10:10</span>
+                          </div>
+                          <span class="badge bg-warning text-dark px-3 py-2 rounded-1">Новый</span>
+                        </div>
+                        <div class="mb-2">
+                          <a href="race.html" class="text-decoration-none small fw-semibold text-primary">
+                            <i class="bi bi-flag-fill"></i> Гран-при Великобритании
+                          </a>
+                        </div>
+                        <p class="mb-3 fs-6">Очень интригующая гонка!!</p>
+                        <div class="d-flex gap-2">
+                          <button class="btn btn-sm btn-outline-success rounded-1 px-3" data-bs-toggle="modal"
+                            data-bs-target="#approveModal">Одобрить</button>
+                          <button class="btn btn-sm btn-outline-danger rounded-1 px-3" data-bs-toggle="modal"
+                            data-bs-target="#deleteModal">Удалить</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="uk-all-page2" role="tabpanel">
+                <div class="row g-4">
+                  <div class="col-12">
+                    <div class="card rounded-3 shadow-sm border-0">
+                      <div class="card-body p-4">
+                        <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                          <div>
+                            <i class="bi bi-person-circle fs-5 me-1 align-middle"></i>
+                            <strong class="fs-5">Сергей</strong>
+                            <span class="text-muted small ms-2"><i class="bi bi-clock"></i> 8 июля 2025, 16:00</span>
+                          </div>
+                          <span class="badge bg-warning text-dark px-3 py-2 rounded-1">Новый</span>
+                        </div>
+                        <div class="mb-2">
+                          <a href="race.html" class="text-decoration-none small fw-semibold text-primary">
+                            <i class="bi bi-flag-fill"></i> Гран-при Великобритании
+                          </a>
+                        </div>
+                        <p class="mb-3 fs-6">Лучшая гонка сезона! Норрис красавчик.</p>
+                        <div class="d-flex gap-2">
+                          <button class="btn btn-sm btn-outline-success rounded-1 px-3" data-bs-toggle="modal"
+                            data-bs-target="#approveModal">Одобрить</button>
+                          <button class="btn btn-sm btn-outline-danger rounded-1 px-3" data-bs-toggle="modal"
+                            data-bs-target="#deleteModal">Удалить</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="uk-new" role="tabpanel">
+            <div class="row g-4">
+              <div class="col-12">
+                <div class="card rounded-3 shadow-sm border-0">
+                  <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                      <div>
+                        <i class="bi bi-person-circle fs-5 me-1 align-middle"></i>
+                        <strong class="fs-5">Иван</strong>
+                        <span class="text-muted small ms-2"><i class="bi bi-clock"></i> 6 июля 2025, 18:45</span>
+                      </div>
+                      <span class="badge bg-warning text-dark px-3 py-2 rounded-1">Новый</span>
+                    </div>
+                    <div class="mb-2">
+                      <a href="race.html" class="text-decoration-none small fw-semibold text-primary">
+                        <i class="bi bi-flag-fill"></i> Гран-при Великобритании
+                      </a>
+                    </div>
+                    <p class="mb-3 fs-6">На Сильверстоуне была невероятная битва! Хэмилтон вернулся на подиум – класс!
+                    </p>
+                    <div class="d-flex gap-2">
+                      <button class="btn btn-sm btn-outline-success rounded-1 px-3" data-bs-toggle="modal"
+                        data-bs-target="#approveModal">Одобрить</button>
+                      <button class="btn btn-sm btn-outline-danger rounded-1 px-3" data-bs-toggle="modal"
+                        data-bs-target="#deleteModal">Удалить</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="card rounded-3 shadow-sm border-0">
+                  <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                      <div>
+                        <i class="bi bi-person-circle fs-5 me-1 align-middle"></i>
+                        <strong class="fs-5">Дмитрий</strong>
+                        <span class="text-muted small ms-2"><i class="bi bi-clock"></i> 7 июля 2025, 10:10</span>
+                      </div>
+                      <span class="badge bg-warning text-dark px-3 py-2 rounded-1">Новый</span>
+                    </div>
+                    <div class="mb-2">
+                      <a href="race.html" class="text-decoration-none small fw-semibold text-primary">
+                        <i class="bi bi-flag-fill"></i> Гран-при Великобритании
+                      </a>
+                    </div>
+                    <p class="mb-3 fs-6">Очень интригующая гонка!!</p>
+                    <div class="d-flex gap-2">
+                      <button class="btn btn-sm btn-outline-success rounded-1 px-3" data-bs-toggle="modal"
+                        data-bs-target="#approveModal">Одобрить</button>
+                      <button class="btn btn-sm btn-outline-danger rounded-1 px-3" data-bs-toggle="modal"
+                        data-bs-target="#deleteModal">Удалить</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="card rounded-3 shadow-sm border-0">
+                  <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                      <div>
+                        <i class="bi bi-person-circle fs-5 me-1 align-middle"></i>
+                        <strong class="fs-5">Сергей</strong>
+                        <span class="text-muted small ms-2"><i class="bi bi-clock"></i> 8 июля 2025, 16:00</span>
+                      </div>
+                      <span class="badge bg-warning text-dark px-3 py-2 rounded-1">Новый</span>
+                    </div>
+                    <div class="mb-2">
+                      <a href="race.html" class="text-decoration-none small fw-semibold text-primary">
+                        <i class="bi bi-flag-fill"></i> Гран-при Великобритании
+                      </a>
+                    </div>
+                    <p class="mb-3 fs-6">Лучшая гонка сезона! Норрис красавчик.</p>
+                    <div class="d-flex gap-2">
+                      <button class="btn btn-sm btn-outline-success rounded-1 px-3" data-bs-toggle="modal"
+                        data-bs-target="#approveModal">Одобрить</button>
+                      <button class="btn btn-sm btn-outline-danger rounded-1 px-3" data-bs-toggle="modal"
+                        data-bs-target="#deleteModal">Удалить</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="uk-checked" role="tabpanel">
+            <div class="row g-4">
+              <div class="col-12">
+                <div class="card rounded-3 shadow-sm border-0">
+                  <div class="card-body p-4 text-center text-muted">
+                    <i class="bi bi-check-circle fs-3"></i>
+                    <p class="mt-2 mb-0">Нет проверенных комментариев для этой гонки.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="modal fade" id="approveModal" tabindex="-1" aria-labelledby="approveModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4 shadow">
+        <div class="modal-header border-0">
+          <h5 class="modal-title fw-bold" id="approveModalLabel"><i
+              class="bi bi-check-circle-fill text-success me-2"></i>Одобрение комментария</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body pt-0">
+          <p>Вы действительно хотите одобрить этот комментарий? После одобрения он станет виден всем пользователям.</p>
+        </div>
+        <div class="modal-footer border-0">
+          <button type="button" class="btn btn-outline-secondary rounded-1 px-4" data-bs-dismiss="modal">Отмена</button>
+          <button type="button" class="btn btn-success rounded-1 px-4" data-bs-dismiss="modal">Да, одобрить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4 shadow">
+        <div class="modal-header border-0">
+          <h5 class="modal-title fw-bold" id="deleteModalLabel"><i
+              class="bi bi-trash3-fill text-danger me-2"></i>Удаление комментария</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body pt-0">
+          <p>Комментарий будет удалён без возможности восстановления. Продолжить?</p>
+        </div>
+        <div class="modal-footer border-0">
+          <button type="button" class="btn btn-outline-secondary rounded-1 px-4" data-bs-dismiss="modal">Отмена</button>
+          <button type="button" class="btn btn-danger rounded-1 px-4" data-bs-dismiss="modal">Удалить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="newCommentModal" tabindex="-1" aria-labelledby="newCommentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content rounded-4 shadow">
+        <div class="modal-header border-0">
+          <h5 class="modal-title fw-bold" id="newCommentModalLabel"><i class="bi bi-chat-dots-fill me-2"></i>Добавить
+            комментарий</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body pt-0">
+          <form>
+            <div class="mb-3"><label class="form-label fw-semibold">Автор</label><input type="text"
+                class="form-control rounded-3" placeholder="Имя пользователя" value="Admin"></div>
+            <div class="mb-3"><label class="form-label fw-semibold">Гонка</label><select class="form-select rounded-3">
+                <option>Гран-при Бахрейна (2025)</option>
+                <option>Гран-при Саудовской Аравии (2025)</option>
+                <option>Гран-при Великобритании (2025)</option>
+                <option>Гран-при Италии (2025)</option>
+                <option selected>Гран-при Азербайджана (2026)</option>
+              </select></div>
+            <div class="mb-3"><label class="form-label fw-semibold">Текст комментария</label><textarea
+                class="form-control rounded-3" rows="4" placeholder="Напишите ваш комментарий..."></textarea></div>
+          </form>
+        </div>
+        <div class="modal-footer border-0">
+          <button type="button" class="btn btn-outline-secondary rounded-1 px-4" data-bs-dismiss="modal">Отмена</button>
+          <button type="button" class="btn btn-primary rounded-1 px-4" data-bs-dismiss="modal">Опубликовать</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/theme.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

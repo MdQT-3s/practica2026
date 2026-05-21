@@ -1,0 +1,114 @@
+.navbar {
+  background-color: #272a3a !important;
+}
+.my_menu_left {
+  background-color: #272a3a !important;
+  color: #fff;
+}
+.body {
+  background-color: #534f5e !important;
+}
+
+.btn-outline-primary {
+  color: #d6c9f9;
+  border-color: #a58af0;
+  border-width: 1px;
+  padding: 10px;
+  background-color: #534f5e;
+}
+.btn-outline-primary:hover {
+  background-color: #5b41a1;
+  border-color: #a58af0;
+}
+.card-header{
+  background-color: #272a3a !important;
+}
+.btn-outline-secondary {
+  border-color: #a58af0;
+  color: #d6c9f9;
+}
+.btn-outline-secondary:hover {
+  background-color: #5b41a1;
+  color: #d6c9f9;
+}
+.theme-toggle {
+  color: #a58af0;
+}
+
+.active_color {
+  background-color: #a58af0 !important;
+  color: #fff;
+}
+.nav-link.active {
+  background-color: #a58af0 !important;
+  color: #fff !important;
+}
+.nav-link:hover {
+  color: #713eff !important;
+}
+
+.auth_container {
+  background-color: #272a3a !important;
+}
+
+.body_auth {
+  background-color: #534f5e !important;
+}
+
+.timer_color {
+  background-color: #5231aa !important;
+}
+
+.form-control {
+  border-color: #a58af0 !important ;
+  background-color: #534f5e !important;
+}
+.auth_name {
+  background-color: #272a3a !important;
+}
+
+.add_race_button {
+  background-color: #5231aa !important;
+}
+.add_race_button:hover {
+  background-color: #7216dc !important;
+}
+
+.card {
+  background-color:#272a3a !important;
+}
+.color_button_comments{
+  color: white !important;
+  border-color: white !important;
+}
+.color_button_comments:hover{
+  background-color: #3647a4 !important;
+}
+
+
+.list-group-item {
+  background-color: #272a3a !important;
+  color: #fff !important;
+  border-color: #3b3e52 !important;
+}
+
+.nav-pills .nav-link,
+.nav-tabs .nav-link {
+  background-color: #3b3e52 !important;
+  color: #d6c9f9 !important;
+  border: 1px solid #5b5f71 !important;
+  transition: all 0.2s;
+}
+.nav-pills .nav-link.active,
+.nav-tabs .nav-link.active {
+  background-color: #a58af0 !important;
+  color: #fff !important;
+  border-color: #a58af0 !important;
+  box-shadow: 0 0 0 1px #a58af0;
+}
+.nav-pills .nav-link:hover:not(.active),
+.nav-tabs .nav-link:hover:not(.active) {
+  background-color: #5b41a1 !important;
+  color: #fff !important;
+  border-color: #a58af0 !important;
+}

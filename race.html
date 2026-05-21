@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ru" data-bs-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Гонки — AdminF1</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body class="bg-body-tertiary body">
+  <nav class="navbar bg-body py-2">
+    <div class="container-fluid px-3 px-lg-4 d-flex justify-content-between align-items-center">
+      <div class="d-flex align-items-center">
+        <button class="btn btn-outline-secondary d-lg-none p-2" type="button" data-bs-toggle="offcanvas"
+          data-bs-target="#mobileMenu" aria-label="Открыть меню">
+          <i class="bi bi-list fs-4"></i>
+        </button>
+        <a class="navbar-brand fs-2 fw-bold d-none d-lg-inline ms-3 ps-3" href="index.html">AdminF1</a>
+      </div>
+
+      <div class="d-flex align-items-center gap-2">
+        <button
+          class="btn btn-outline-secondary theme-toggle py-2 px-3 d-none d-lg-inline-flex align-items-center justify-content-center"
+          type="button" aria-label="Переключить тему">
+          <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M7.5,2C5.71,3.15 4.5,5.18 4.5,7.5C4.5,9.82 5.71,11.85 7.53,13C4.46,13 2,10.54 2,7.5A5.5,5.5 0 0,1 7.5,2M19.07,3.5L20.5,4.93L4.93,20.5L3.5,19.07L19.07,3.5M12.89,5.93L11.41,5L9.97,6L10.39,4.3L9,3.24L10.75,3.12L11.33,1.47L12,3.1L13.73,3.13L12.38,4.26L12.89,5.93M9.59,9.54L8.43,8.81L7.31,9.59L7.65,8.27L6.56,7.44L7.92,7.35L8.37,6.06L8.88,7.33L10.24,7.36L9.19,8.23L9.59,9.54M19,13.5A5.5,5.5 0 0,1 13.5,19C12.28,19 11.15,18.6 10.24,17.93L17.93,10.24C18.6,11.15 19,12.28 19,13.5M14.6,20.08L17.37,18.93L17.13,22.28L14.6,20.08M18.93,17.38L20.08,14.61L22.28,17.15L18.93,17.38M20.08,12.42L18.94,9.64L22.28,9.88L20.08,12.42M9.63,18.93L12.4,20.08L9.87,22.27L9.63,18.93Z" />
+          </svg>
+        </button>
+
+        <div class="dropdown">
+          <button class="btn btn-outline-secondary dropdown-toggle py-2 px-3 d-flex align-items-center gap-2"
+            type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-person-circle fs-5"></i>
+            <span>Аккаунт</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 mt-2 py-1">
+            <li>
+              <a class="dropdown-item py-2 rounded-2" href="#">Выход</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid px-0">
+    <div class="row g-0">
+      <aside class="col-lg-3 col-xl-2 d-none d-lg-block bg-body border-end min-vh-100 p-3 my_menu_left">
+        <div class="d-flex flex-column gap-3">
+          <nav class="nav flex-column gap-4">
+            <a class="nav-link text-body px-3 py-2 text-center" href="index.html">
+              Главная
+            </a>
+            <a class="nav-link text-body px-3 py-2 text-center" href="auth.html">Авторизация</a>
+            <a class="nav-link text-body px-3 py-2 text-center" href="users.html">Пользователи</a>
+            <a class="nav-link active fw-semibold bg-body-secondary rounded-pill px-4 py-2 text-center active_color"
+              href="race.html">Гонки</a>
+            <a class="nav-link text-body px-3 py-2 text-center" href="comments.html">Комментарии</a>
+          </nav>
+        </div>
+      </aside>
+
+      <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
+        <div class="offcanvas-header">
+          <h2 class="offcanvas-title fw-semibold" id="mobileMenuLabel">
+            AdminF1
+          </h2>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Закрыть"></button>
+        </div>
+        <div class="offcanvas-body">
+          <button
+            class="btn btn-outline-secondary theme-toggle w-100 py-2 d-flex align-items-center justify-content-center gap-2 mb-3"
+            type="button">
+            <svg width="35" height="35" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M7.5,2C5.71,3.15 4.5,5.18 4.5,7.5C4.5,9.82 5.71,11.85 7.53,13C4.46,13 2,10.54 2,7.5A5.5,5.5 0 0,1 7.5,2M19.07,3.5L20.5,4.93L4.93,20.5L3.5,19.07L19.07,3.5M12.89,5.93L11.41,5L9.97,6L10.39,4.3L9,3.24L10.75,3.12L11.33,1.47L12,3.1L13.73,3.13L12.38,4.26L12.89,5.93M9.59,9.54L8.43,8.81L7.31,9.59L7.65,8.27L6.56,7.44L7.92,7.35L8.37,6.06L8.88,7.33L10.24,7.36L9.19,8.23L9.59,9.54M19,13.5A5.5,5.5 0 0,1 13.5,19C12.28,19 11.15,18.6 10.24,17.93L17.93,10.24C18.6,11.15 19,12.28 19,13.5M14.6,20.08L17.37,18.93L17.13,22.28L14.6,20.08M18.93,17.38L20.08,14.61L22.28,17.15L18.93,17.38M20.08,12.42L18.94,9.64L22.28,9.88L20.08,12.42M9.63,18.93L12.4,20.08L9.87,22.27L9.63,18.93Z" />
+            </svg>
+          </button>
+          <nav class="nav flex-column gap-2">
+            <a class="nav-link text-body px-3 py-2 text-center" href="index.html">Главная</a>
+            <a class="nav-link text-body px-3 py-2 text-center" href="auth.html">Авторизация</a>
+            <a class="nav-link text-body px-3 py-2 text-center" href="users.html">Пользователи</a>
+            <a class="nav-link active fw-semibold bg-body-secondary rounded-pill px-4 py-2 text-center active_color"
+              href="race.html">Гонки</a>
+            <a class="nav-link text-body px-3 py-2 text-center" href="comments.html">Комментарии</a>
+          </nav>
+        </div>
+      </div>
+
+      <main class="col-12 col-lg-9 col-xl-10 p-3 p-md-4">
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+          <h2 class="m-0">Управление гонками</h2>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+            <div class="card h-100 rounded-0 shadow-sm">
+              <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <h5 class="card-title fw-bold mb-0">Гран-при Бахрейна</h5>
+                  <span class="badge bg-success">Завершена</span>
+                </div>
+                <p class="card-text text-muted small mb-1">
+                  <i class="bi bi-calendar3"></i> 2 марта 2025
+                </p>
+                <p class="card-text text-muted small mb-1">
+                  <i class="bi bi-geo-alt"></i> Сахир
+                </p>
+                <p class="card-text text-muted small mb-2">
+                  <i class="bi bi-trophy"></i> Победитель: Макс Ферстаппен
+                </p>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <div class="text-warning">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <span class="text-muted small ms-1">4.7</span>
+                  </div>
+                  <div class="text-muted small">
+                    <i class="bi bi-chat-dots"></i> 124 комментария
+                  </div>
+                </div>
+                <div class="mt-auto d-flex gap-2 flex-wrap">
+                  <a href="comments.html#bahreyn"
+                    class="color_button_comments btn btn-outline-secondary btn-sm flex-grow-1 d-flex align-items-center justify-content-center gap-1">
+                    <i class="bi bi-chat-dots"></i> Комментарии
+                  </a>
+                  <button class="btn btn-outline-primary btn-sm flex-grow-1" data-bs-toggle="modal"
+                    data-bs-target="#editRaceModal">
+                    Редактировать
+                  </button>
+                  <button class="btn btn-outline-danger btn-sm flex-grow-1">
+                    Удалить
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+            <div class="card h-100 rounded-0 shadow-sm">
+              <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <h5 class="card-title fw-bold mb-0">
+                    Гран-при Великобритании
+                  </h5>
+                  <span class="badge bg-success">Завершена</span>
+                </div>
+                <p class="card-text text-muted small mb-1">
+                  <i class="bi bi-calendar3"></i> 6 июля 2025
+                </p>
+                <p class="card-text text-muted small mb-1">
+                  <i class="bi bi-geo-alt"></i> Сильверстоун
+                </p>
+                <p class="card-text text-muted small mb-2">
+                  <i class="bi bi-trophy"></i> Победитель: Льюис Хэмилтон
+                </p>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <div class="text-warning">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span class="text-muted small ms-1">5.0</span>
+                  </div>
+                  <div class="text-muted small">
+                    <i class="bi bi-chat-dots"></i> 203 комментария
+                  </div>
+                </div>
+                <div class="mt-auto d-flex gap-2 flex-wrap">
+                  <a href="comments.html#UK"
+                    class="color_button_comments btn btn-outline-secondary btn-sm flex-grow-1 d-flex align-items-center justify-content-center gap-1">
+                    <i class="bi bi-chat-dots"></i> Комментарии
+                  </a>
+                  <button class="btn btn-outline-primary btn-sm flex-grow-1" data-bs-toggle="modal"
+                    data-bs-target="#editRaceModal">
+                    Редактировать
+                  </button>
+                  <button class="btn btn-outline-danger btn-sm flex-grow-1">
+                    Удалить
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+            <div class="card h-100 rounded-0 shadow-sm">
+              <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <h5 class="card-title fw-bold mb-0">Гран-при Италии</h5>
+                  <span class="badge bg-warning text-dark">Предстоит</span>
+                </div>
+                <p class="card-text text-muted small mb-1">
+                  <i class="bi bi-calendar3"></i> 7 сентября 2025
+                </p>
+                <p class="card-text text-muted small mb-1">
+                  <i class="bi bi-geo-alt"></i> Монца
+                </p>
+                <p class="card-text text-muted small mb-2">
+                  <i class="bi bi-trophy"></i> Победитель: не определён
+                </p>
+                <div class="row justify-content-center g-2 mb-3">
+                  <div class="col-4">
+                    <div class="bg-body-secondary py-2 text-center timer_color">
+                      <div class="fs-5 fw-semibold">7</div>
+                      <div class="small">дней</div>
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <div class="bg-body-secondary py-2 text-center timer_color">
+                      <div class="fs-5 fw-semibold">18</div>
+                      <div class="small">часов</div>
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <div class="bg-body-secondary py-2 text-center timer_color">
+                      <div class="fs-5 fw-semibold">10</div>
+                      <div class="small">минут</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="mt-auto d-flex gap-2 flex-wrap">
+                  <button class="btn btn-outline-secondary btn-sm flex-grow-1 text-center" disabled>
+                    <i class="bi bi-chat-dots"></i> Комментарии
+                  </button>
+                  <button class="btn btn-outline-primary btn-sm flex-grow-1" data-bs-toggle="modal"
+                    data-bs-target="#editRaceModal">
+                    Редактировать
+                  </button>
+                  <button class="btn btn-outline-danger btn-sm flex-grow-1">
+                    Удалить
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+            <div class="card h-100 rounded-0 shadow-sm">
+              <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <h5 class="card-title fw-bold mb-0">
+                    Гран-при Азербайджана
+                  </h5>
+                  <span class="badge bg-warning text-dark">Предстоит</span>
+                </div>
+                <p class="card-text text-muted small mb-1">
+                  <i class="bi bi-calendar3"></i> 19 сентября 2026
+                </p>
+                <p class="card-text text-muted small mb-1">
+                  <i class="bi bi-geo-alt"></i> Баку
+                </p>
+                <p class="card-text text-muted small mb-2">
+                  <i class="bi bi-trophy"></i> Победитель: не определён
+                </p>
+                <div class="row justify-content-center g-2 mb-3">
+                  <div class="col-4">
+                    <div class="bg-body-secondary py-2 text-center timer_color">
+                      <div class="fs-5 fw-semibold">14</div>
+                      <div class="small">дней</div>
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <div class="bg-body-secondary py-2 text-center timer_color">
+                      <div class="fs-5 fw-semibold">6</div>
+                      <div class="small">часов</div>
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <div class="bg-body-secondary py-2 text-center timer_color">
+                      <div class="fs-5 fw-semibold">25</div>
+                      <div class="small">минут</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="mt-auto d-flex gap-2 flex-wrap">
+                  <button class="btn btn-outline-secondary btn-sm flex-grow-1 text-center" disabled>
+                    <i class="bi bi-chat-dots"></i> Комментарии
+                  </button>
+                  <button class="btn btn-outline-primary btn-sm flex-grow-1" data-bs-toggle="modal"
+                    data-bs-target="#editRaceModal">
+                    Редактировать
+                  </button>
+                  <button class="btn btn-outline-danger btn-sm flex-grow-1">
+                    Удалить
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="modal fade" id="editRaceModal" tabindex="-1" aria-labelledby="editRaceModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-3 shadow">
+        <div class="modal-header border-bottom-0">
+          <h5 class="modal-title fw-bold fs-4" id="editRaceModalLabel">
+            <i class="bi bi-pencil-square me-2"></i>Редактирование гонки
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body pt-0">
+          <form id="editRaceForm">
+            <div class="mb-3">
+              <label for="editName" class="form-label fw-semibold">Название</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="editName" value="Гран-при Бахрейна" />
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="editDate" class="form-label fw-semibold">Дата проведения</label>
+              <div class="input-group">
+                <input type="date" class="form-control" id="editDate" value="2025-03-02" />
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="editCircuit" class="form-label fw-semibold">Трасса</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="editCircuit" value="Сахир" />
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="editWinner" class="form-label fw-semibold">Победитель</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="editWinner" value=""
+                  placeholder="Если завершена" />
+              </div>
+            </div>
+            <div class="mb-4">
+              <label for="editStatus" class="form-label fw-semibold">Статус</label>
+              <select class="form-select" id="editStatus">
+                <option value="finished" selected>Завершена</option>
+                <option value="upcoming">Предстоит</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer border-top-0">
+          <button type="button" class="btn btn-outline-danger btn-lg flex-grow-1 py-2" data-bs-dismiss="modal">
+            Отмена
+          </button>
+          <button type="button" class="btn btn-outline-primary flex-grow-1 py-2" id="saveEditBtn"
+            data-bs-dismiss="modal">
+            Сохранить
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/theme.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
