@@ -135,7 +135,8 @@
                     data-bs-target="#editRaceModal">
                     Редактировать
                   </button>
-                  <button class="btn btn-outline-danger btn-sm flex-grow-1">
+                  <button class="btn btn-outline-danger btn-sm flex-grow-1" data-bs-toggle="modal"
+                    data-bs-target="#deleteRaceModal">
                     Удалить
                   </button>
                 </div>
@@ -183,7 +184,8 @@
                     data-bs-target="#editRaceModal">
                     Редактировать
                   </button>
-                  <button class="btn btn-outline-danger btn-sm flex-grow-1">
+                  <button class="btn btn-outline-danger btn-sm flex-grow-1" data-bs-toggle="modal"
+                    data-bs-target="#deleteRaceModal">
                     Удалить
                   </button>
                 </div>
@@ -235,7 +237,8 @@
                     data-bs-target="#editRaceModal">
                     Редактировать
                   </button>
-                  <button class="btn btn-outline-danger btn-sm flex-grow-1">
+                  <button class="btn btn-outline-danger btn-sm flex-grow-1" data-bs-toggle="modal"
+                    data-bs-target="#deleteRaceModal">
                     Удалить
                   </button>
                 </div>
@@ -289,7 +292,8 @@
                     data-bs-target="#editRaceModal">
                     Редактировать
                   </button>
-                  <button class="btn btn-outline-danger btn-sm flex-grow-1">
+                  <button class="btn btn-outline-danger btn-sm flex-grow-1" data-bs-toggle="modal"
+                    data-bs-target="#deleteRaceModal">
                     Удалить
                   </button>
                 </div>
@@ -354,6 +358,26 @@
             data-bs-dismiss="modal">
             Сохранить
           </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="deleteRaceModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-0">
+        <div class="modal-header bg-body">
+          <h5 class="modal-title fw-semibold text-danger"><i class="bi bi-exclamation-triangle-fill me-2"></i>Удаление гонки</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <p><strong>Внимание!</strong> Это действие необратимо.</p>
+          <p>Все данные о гонке, включая комментарии, будут удалены навсегда.</p>
+          <p class="mb-0">Вы уверены?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary rounded-0" data-bs-dismiss="modal">Отмена</button>
+          <button type="button" class="btn btn-danger rounded-0" data-bs-dismiss="modal">Удалить навсегда</button>
         </div>
       </div>
     </div>

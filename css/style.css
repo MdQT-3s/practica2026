@@ -100,3 +100,8 @@
     font-size: 0.8rem;
   }
 }
+.table-responsive-lg{
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+  padding-bottom: 10px !important;
+}

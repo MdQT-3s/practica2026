@@ -213,7 +213,6 @@
     </div>
   </div>
 
-  <!-- Модальные окна (без изменений, поля password hash уже есть) -->
   <div class="modal fade" id="addUserModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content rounded-0">
@@ -245,57 +244,57 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline-secondary rounded-0" data-bs-dismiss="modal">Отмена</button>
-          <button type="button" class="btn btn-primary rounded-0" data-bs-dismiss="modal">Создать</button>
+           <button type="button" class="btn btn-lg btn-outline-danger rounded-0" data-bs-dismiss="modal">Отмена</button>
+        <button type="button" class="btn btn-sm btn-outline-primary " data-bs-dismiss="modal">Создать</button>
         </div>
       </div>
     </div>
   </div>
 
   <div class="modal fade" id="editUserModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content rounded-0">
-        <div class="modal-header bg-body">
-          <h5 class="modal-title fw-semibold"><i class="bi bi-pencil-square me-2"></i>Редактирование пользователя</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="mb-3">
-              <label class="form-label fw-semibold">Имя</label>
-              <input type="text" class="form-control rounded-0" placeholder="Имя пользователя">
-            </div>
-            <div class="mb-3">
-              <label class="form-label fw-semibold">Email</label>
-              <input type="email" class="form-control rounded-0" placeholder="user@example.com">
-            </div>
-            <div class="mb-3">
-              <label class="form-label fw-semibold">Password hash</label>
-              <input type="text" class="form-control rounded-0" placeholder="Новый хэш пароля">
-            </div>
-            <div class="mb-3">
-              <label class="form-label fw-semibold">Роль</label>
-              <select class="form-select rounded-0">
-                <option>Пользователь</option>
-                <option>Админ</option>
-              </select>
-            </div>
-            <div class="mb-4">
-              <label class="form-label fw-semibold">Статус</label>
-              <select class="form-select rounded-0">
-                <option>Активен</option>
-                <option>Заблокирован</option>
-              </select>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline-secondary rounded-0" data-bs-dismiss="modal">Отмена</button>
-          <button type="button" class="btn btn-primary rounded-0" data-bs-dismiss="modal">Сохранить</button>
-        </div>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-0">
+      <div class="modal-header bg-body">
+        <h5 class="modal-title fw-semibold"><i class="bi bi-pencil-square me-2"></i>Редактирование пользователя</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Имя</label>
+            <input type="text" class="form-control rounded-0" placeholder="Имя пользователя">
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Email</label>
+            <input type="email" class="form-control rounded-0" placeholder="user@example.com">
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Password hash</label>
+            <input type="text" class="form-control rounded-0" placeholder="Новый хэш пароля">
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Роль</label>
+            <select class="form-select rounded-0">
+              <option>Пользователь</option>
+              <option>Админ</option>
+            </select>
+          </div>
+          <div class="mb-4">
+            <label class="form-label fw-semibold">Статус</label>
+            <select class="form-select rounded-0">
+              <option>Активен</option>
+              <option>Заблокирован</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-lg btn-outline-danger rounded-0" data-bs-dismiss="modal">Отмена</button>
+        <button type="button" class="btn btn-sm btn-outline-primary " data-bs-dismiss="modal">Сохранить</button>
       </div>
     </div>
   </div>
+</div>
 
   <div class="modal fade" id="blockUserModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
